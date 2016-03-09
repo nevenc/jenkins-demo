@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2016-03-09 21:33:16.6 UTC</timestamp>
+  <md5sum>5b38c40c97fbd0adee29f91e60405584</md5sum>
+  <fileName>junit:junit-4.12.jar</fileName>
+  <usages>
+    <entry>
+      <string>demo-time/com.example:demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+    <entry>
+      <string>demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>

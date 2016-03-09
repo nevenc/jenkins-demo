@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2016-03-09 21:33:16.14 UTC</timestamp>
+  <md5sum>c7bbf3e851d9977ed4d314bde8eb8209</md5sum>
+  <fileName>org.thymeleaf:thymeleaf-spring4-2.1.4.RELEASE.jar</fileName>
+  <usages>
+    <entry>
+      <string>demo-time/com.example:demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+    <entry>
+      <string>demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2016-03-09 21:33:16.53 UTC</timestamp>
+  <md5sum>39499f57d90a208fbe67a3e91f5ac058</md5sum>
+  <fileName>com.fasterxml.jackson.core:jackson-databind-2.6.3.jar</fileName>
+  <usages>
+    <entry>
+      <string>demo-time/com.example:demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+    <entry>
+      <string>demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>

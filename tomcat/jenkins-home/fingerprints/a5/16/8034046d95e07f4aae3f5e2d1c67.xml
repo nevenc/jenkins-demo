@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2016-03-09 21:33:16.38 UTC</timestamp>
+  <md5sum>a5168034046d95e07f4aae3f5e2d1c67</md5sum>
+  <fileName>org.slf4j:slf4j-api-1.7.13.jar</fileName>
+  <usages>
+    <entry>
+      <string>demo-time/com.example:demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+    <entry>
+      <string>demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>

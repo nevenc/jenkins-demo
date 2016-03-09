@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.7.1">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.2">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/asaikali/demo-time.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <rootModule>
+    <groupId>com.example</groupId>
+    <artifactId>demo-time</artifactId>
+  </rootModule>
+  <rootPOM>demo-time/pom.xml</rootPOM>
+  <goals>verify</goals>
+  <aggregatorStyleBuild>true</aggregatorStyleBuild>
+  <incrementalBuild>false</incrementalBuild>
+  <ignoreUpstremChanges>false</ignoreUpstremChanges>
+  <archivingDisabled>false</archivingDisabled>
+  <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
+  <resolveDependencies>false</resolveDependencies>
+  <processPlugins>false</processPlugins>
+  <mavenValidationLevel>-1</mavenValidationLevel>
+  <runHeadless>false</runHeadless>
+  <disableTriggerDownstreamProjects>false</disableTriggerDownstreamProjects>
+  <blockTriggerWhenBuilding>true</blockTriggerWhenBuilding>
+  <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+  <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+  <reporters/>
+  <publishers/>
+  <buildWrappers/>
+  <prebuilders/>
+  <postbuilders>
+    <hudson.tasks.Shell>
+      <command># production app settings 
+APP_PROD_ROUTE=adib-demo-time
+APP_PROD_NAME=demo-time 
+
+# define app properties
+APP_NAME=demo-$BUILD_NUMBER
+APP_JAR=$WORKSPACE/demo-time/target/demo-time-0.0.1-SNAPSHOT.jar
+APP_TEMP_ROUTE=adib-demo-time-$BUILD_NUMBER 
+
+
+# Environment Settings
+ORG=ExploPaaS2016
+SPACE=jenkins
+DOMAIN=cfapps.io
+
+# target an environment where all the services are already defined 
+cf target -o $ORG -s $SPACE
+
+# push the application with a manifest that binds all required services 
+cf push $APP_NAME -p $APP_JAR -n $APP_TEMP_ROUTE -m 256M
+
+# Run Tests on the newly deployed app check that it is okay
+echo &quot;&quot;
+curl http://$APP_TEMP_ROUTE.$DOMAIN
+echo &quot;&quot;
+
+# start directing traffic to the new app instance 
+cf map-route $APP_NAME $DOMAIN -n $APP_PROD_ROUTE
+
+# scale up the new app instance
+cf scale $APP_NAME -i 2 
+
+# scale down the proi app instances 
+cf scale $APP_PROD_NAME -i 1
+
+# stop taking traffic on the current prod instance  
+cf unmap-route $APP_PROD_NAME $DOMAIN -n $APP_PROD_ROUTE  
+
+# decommission the old app 
+cf stop $APP_PROD_NAME
+cf rename $APP_PROD_NAME replaced-with-build-$BUILD_NUMBER
+
+# make the current app the new prod application 
+cf unmap-route $APP_NAME $DOMAIN -n $APP_TEMP_ROUTE 
+cf rename $APP_NAME $APP_PROD_NAME </command>
+    </hudson.tasks.Shell>
+  </postbuilders>
+  <runPostStepsIfResult>
+    <name>FAILURE</name>
+    <ordinal>2</ordinal>
+    <color>RED</color>
+    <completeBuild>true</completeBuild>
+  </runPostStepsIfResult>
+</maven2-moduleset>

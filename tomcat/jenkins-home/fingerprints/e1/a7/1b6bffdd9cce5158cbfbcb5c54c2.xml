@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2016-03-09 21:33:16.4 UTC</timestamp>
+  <md5sum>e1a71b6bffdd9cce5158cbfbcb5c54c2</md5sum>
+  <fileName>org.apache.tomcat.embed:tomcat-embed-websocket-8.0.28.jar</fileName>
+  <usages>
+    <entry>
+      <string>demo-time/com.example:demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+    <entry>
+      <string>demo-time</string>
+      <ranges>9-15</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>
