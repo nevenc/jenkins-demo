@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: williamg
+Build-Jdk: 1.7.0_80
+Extension-Name: cloudfoundry
+Specification-Title: Pushes a project to Cloud Foundry or a CF-based p
+ latform (e.g. Stackato) at the end of a build.
+Implementation-Title: cloudfoundry
+Implementation-Version: 1.5
+Group-Id: org.jenkins-ci.plugins
+Short-Name: cloudfoundry
+Long-Name: Cloud Foundry Plugin
+Url: http://wiki.jenkins-ci.org/display/JENKINS/Cloud+Foundry+Plugin
+Plugin-Version: 1.5
+Hudson-Version: 1.532.3
+Jenkins-Version: 1.532.3
+Plugin-Dependencies: credentials:1.21,token-macro:1.10
+Plugin-Developers: William Gautier:WilliamG:william.gautier@hpe.com
+
